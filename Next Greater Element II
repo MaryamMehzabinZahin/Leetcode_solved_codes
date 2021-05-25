@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& nums) {
+        vector<int> res;
+     
+        for(int i=0; i<nums.size(); i++)
+        {
+            int m=i+1;
+            int flag=0;
+            while(m!=i)
+            {
+                if(m==nums.size())
+                {
+                    m=0;
+                }
+                if(nums[i]<nums[m])
+                {
+                    res.push_back(nums[m]);
+                    flag=1;
+                    break;
+                }
+               
+                m++;
+            }
+            cout<<nums[i]<<" "<<flag<<endl;
+            if(flag==0){
+            res.push_back(-1);
+            }
+        }
+        return res;
+    }
+};
