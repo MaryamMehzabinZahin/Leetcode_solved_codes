@@ -1,0 +1,56 @@
+//https://leetcode.com/problems/find-the-difference/
+
+Using hash table:
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+       unordered_map<char,int> umap;
+       char res; 
+       for(int i=0;i<s.length();i++)
+       {
+           umap[s[i]]++;
+       }
+      //for (auto x : umap)
+      //cout << x.first << " " << x.second << endl;
+       for(int i=0;i<t.length();i++)
+       {
+           
+           if(umap.find(t[i])==umap.end() || umap[t[i]]<1)
+           {
+               res=t[i];
+               break;
+           }
+           umap[t[i]]--;
+       }
+        return res;
+    }
+};
+//using bit manipulation
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        char r=0;
+        char r1=0;
+        for(int i=0;i<s.length();i++)
+        {
+            r=r^s[i];
+        }
+        for(int i=0;i<t.length();i++)
+        {
+            r1=r1^t[i];
+        }
+        r=r^r1;
+        
+        return r;
+    }
+};
+//best one, using bit manipulation
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        char r=0;
+        for(char c:s) r ^=c;
+        for(char c:t) r ^=c;
+        return r;
+    }
+};
