@@ -1,0 +1,29 @@
+
+//https://leetcode.com/problems/hamming-distance/
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int Xor = x ^ y;
+        int countt = 0;
+        while(Xor>0){
+            countt = countt+ (Xor & 1);
+            Xor = Xor>>1;
+        }
+        return countt;
+}
+};
+
+//not so good solution
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int res=x^y;
+        int dis=0;
+        while(res)
+        {
+            dis++;
+            res=res & (res-1);
+        }
+        return dis;
+    }
+};
