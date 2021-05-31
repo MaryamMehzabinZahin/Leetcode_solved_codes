@@ -58,3 +58,31 @@ public:
         return result;
     }
 };
+//Using set stl
+class Solution {
+public:
+    int findMissing(vector<int>& num)
+    {
+        set<int> value;
+        int m=num.size();
+        int res=0;
+        for(int i=0;i<m;i++)
+        {
+            value.insert(num[i]);
+        }
+        for(int i=0; i<m+1; i++)
+        {
+            if(value.find(i)==value.end())
+            {
+                res=i;
+                break;
+            }
+        }
+       return res;
+    }
+    int missingNumber(vector<int>& nums) {
+        int result=findMissing(nums);
+        return result;
+    }
+};
+
