@@ -1,0 +1,31 @@
+//https://leetcode.com/problems/missing-number/
+Without Bit manipulation:
+class Solution {
+public:
+    int findMissing(vector<int>& num)
+    {
+        sort(num.begin(),num.end());
+        int m=num.size();
+        
+        vector<int> value(m+1);
+        for(int i=0;i<m+1;i++)
+        {
+            value[i]=i;
+          
+        }
+        int res=value[value.size()-1];
+        for(int i=0;i<m;i++)
+        {
+            cout<<value[i]<<" "<<num[i]<<endl;
+            if(num[i]!=value[i]){
+            res=value[i];
+            break;
+            }
+        }
+        return res;  
+    }
+    int missingNumber(vector<int>& nums) {
+        int result=findMissing(nums);
+        return result;
+    }
+};
