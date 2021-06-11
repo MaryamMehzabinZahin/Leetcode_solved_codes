@@ -1,0 +1,64 @@
+class Solution {
+public:
+    bool check(vector<int>& nums) {
+        int n = nums.size();
+        int j = 0;
+        for(int i = 1; i < n; i++){
+            if(nums[i]<nums[i-1]){
+                j=i;
+                break;
+            }
+        }
+        for(int i = 1; i < n; i++){
+            if(nums[(n + j + i)%n] < nums[(n + j + i-1)%n]){
+                return false;
+            }
+        }
+        return true;
+        
+        // int str=INT_MIN;
+        // int minn=INT_MAX;
+        // int j=0;
+        // bool res=true;
+        // int check;
+        // for(int i=0;i<nums.size();i++)
+        // {
+        //     if(nums[i]<=minn)
+        //     {
+        //         if(nums[i]==minn)
+        //         {
+        //             if(check!=i-1)
+        //             {
+        //                 j=i;
+        //             }
+        //             check=i;
+        //         }
+        //         else
+        //         {
+        //             minn=nums[i];
+        //             j=i;
+        //             check=j;
+        //         }
+        //     }
+        // }
+        
+        
+
+        
+//         int c=0;
+//         while(c!=nums.size())
+//         {
+//             j=j%(nums.size());
+//             if(str>nums[j])
+//             {
+//                 res=false;
+//                 break;
+//             }
+//             str=nums[j];
+//             j++;
+//             c++;
+//         }
+//         return res;
+    }
+    
+};
