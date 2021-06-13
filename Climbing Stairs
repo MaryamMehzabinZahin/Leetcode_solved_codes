@@ -1,0 +1,32 @@
+Using DP
+class Solution {
+public:
+    int sum;
+    int memo[50]={0};
+    int calculate(int n)
+    {
+        if(n<=1) return 1;
+        if(memo[n]!=0) return memo[n];
+        memo[n]=calculate(n-1)+calculate(n-2);
+        return memo[n];
+       
+    }
+    int climbStairs(int n) {
+        return calculate(n);        
+    }
+};
+Without DP
+class Solution {
+public:
+    int sum;
+    int calculate(int n)
+    {
+        if(n<=1) return 1;
+        sum=calculate(n-1)+calculate(n-2);
+        return sum;
+       
+    }
+    int climbStairs(int n) {
+        return calculate(n);        
+    }
+};
