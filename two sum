@@ -1,0 +1,52 @@
+Using Hash table:
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> umap;
+        vector<int> res;
+        for(int i=0;i<nums.size();i++)
+        {
+            int val=target-nums[i];
+            if(umap.find(val)!=umap.end())
+            {
+                res.push_back(i);
+                res.push_back(umap[nums[i]]);
+            }
+            umap[nums[i]]=i;
+        }
+        return res;
+    }
+};
+Another way using hash table:
+class Solution {
+public:
+    
+        vector<int> twoSum(vector<int> &numbers, int target)
+{
+    //Key is the number and value is its index in the vector.
+	unordered_map<int, int> hash;
+	vector<int> result;
+    for(int i = 0; i < numbers.size(); i++)
+    {
+        hash[numbers[i]]=i;
+    }
+	for (int i = 0; i < numbers.size(); i++) {
+		int numberToFind = target - numbers[i];
+
+            //if numberToFind is found in map, return them
+		if (hash.find(numberToFind) != hash.end() && hash[numberToFind]!=i ) {
+                    //+1 because indices are NOT zero based
+			result.push_back(hash[numberToFind] );
+            //cout<<result[0];
+			result.push_back(i);			
+			return result;
+		}
+
+            //number was not found. Put it in the map.
+		
+	}
+	return result;
+}
+
+    
+};
